@@ -1,5 +1,7 @@
 # Meu Projeto Node.js
 
+**Este projeto está em desenvolvimento.**
+
 Este é um projeto desenvolvido com **Node.js** e **Express**.  
 
 ## ⚙️ Instalação  

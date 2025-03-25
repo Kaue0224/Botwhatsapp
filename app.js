@@ -47,7 +47,7 @@ app.post('/webhook', async (req, res) => {
       return res.sendStatus(200);
     }
 
-    await handleCommand(from, text);  // Chama a função de forma assíncrona
+    await handleCommand(from, message);  // Chama a função de forma assíncrona
   } else {
     console.log("Nenhuma mensagem encontrada no payload.");
   }

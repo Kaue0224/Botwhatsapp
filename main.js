@@ -1,37 +1,36 @@
-const { sendMessage,sendButtons } = require('./sendMessage');
+const { Menssage } = require('./sendMessage');
 const Comandos = require('./commandsbot/database');
 const Users = require('./commandsbot/selecao');
 
-const users = new Users;
-const bancoDeDados = new Comandos;
+const sendMessage = new Menssage();
+const users = new Users();
+const bancoDeDados = new Comandos();
 
 let etapas = {};
 let selecao = {};
 
-
-const handleCommand = async (from, text) => {
+const handleCommand = async (from, message) => {
     
-    if (!etapas[from]) {  
-       
-        await sendButtons(from, "Escolha uma opção:");
-        etapas[from] = "aguardando_resposta";
-        
-    } 
-    else if (etapas[from] === "aguardando_resposta") {
-        
-        etapas[from] = "proximo_passo";
-        selecao[from] = text; 
-        
-    
+    if (!message) {
+        console.error("Mensagem não definida!");
+        return;
     }
 
-    if (selecao[from] === "1" && etapas[from] === "proximo_passo"){
+    if (!etapas[from]) {
+        await sendMessage.sendButtons(from, "Escolha uma das opções");
+        etapas[from] = "selecionando";
+        return; // Evita continuar a execução
+    }
 
-        await sendMessage(from,"fornecedor")
+    const buttonId = sendMessage.checkifbutton(message);
 
+    if (etapas[from] == "selecionando" && buttonId === "1") {
+        sendMessage.sendMessage(from, "Escolheu fornecedor");
+    } else if (etapas[from] == "selecionando" && buttonId === "2") {
+        sendMessage.sendMessage(from, "Escolheu cliente");
 
-    };
-
+    }
+    
 };
 
 

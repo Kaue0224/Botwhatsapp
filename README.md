@@ -14,7 +14,7 @@ Para iniciar o servidor, utilize o comando correspondente no seu ambiente de des
 
 O servidor será iniciado em **http://localhost:3000** (ou outra porta definida no código).  
 
-## 🛠 Tecnologias Utilizadas  
+##  Tecnologias Utilizadas  
 
 - **Node.js**  
 - **Express**   
